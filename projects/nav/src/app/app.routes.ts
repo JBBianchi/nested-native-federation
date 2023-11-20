@@ -1,7 +1,14 @@
 import { Routes } from '@angular/router';
 import { HelloComponent } from './hello.component';
-import { loadRemoteModule } from '@angular-architects/native-federation';
+import { loadRemoteModule, processRemoteInfo } from '@angular-architects/native-federation';
 import { NavComponent } from './nav.component';
+
+fetch('/assets/federation.manifest.json')
+  .then(res => res.json())
+  .then(remotes => Promise.all(Object.keys(remotes).map(remoteName => {
+    const url = remotes[remoteName];
+    return processRemoteInfo(url, remoteName);
+  })));
 
 export const routes: Routes = [
     {
