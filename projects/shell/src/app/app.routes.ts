@@ -4,5 +4,5 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [{
     path: '',
     loadChildren: () =>
-        loadRemoteModule('nav', './Component')
+        loadRemoteModule('nav', './Routes').then(m => m.routes)
 }];
