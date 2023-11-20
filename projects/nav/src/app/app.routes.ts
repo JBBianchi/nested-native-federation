@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 import { HelloComponent } from './hello.component';
-import { loadRemoteModule } from '@angular-architects/native-federation';
+import { initFederation, loadRemoteModule } from '@angular-architects/native-federation';
 import { NavComponent } from './nav.component';
+
+initFederation('/assets/federation.manifest.json');
 
 export const routes: Routes = [
     {
